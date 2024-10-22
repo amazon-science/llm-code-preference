@@ -1,0 +1,58 @@
+# SPDX-FileCopyrightText: (c) 2024 Amazon.com, Inc. or its affiliates
+#
+# SPDX-License-Identifier: Apache-2.0
+
+## Base model
+base_model: mistralai/Mistral-7B-Instruct-v0.3
+model_type: AutoModelForCausalLM
+tokenizer_type: AutoTokenizer
+
+############################################
+### Configs that you may want to change  ###
+datasets:
+  - path: ./storage/datasets/ace/meta-llama--Meta-Llama-3-8B-Instruct-codegen_soss.teacher.llama3-8b-instruct-v1.critic_evol_v3.axolotl.classification.both_order
+    conversation: mistral
+    type: sharegpt.load_ultrachat
+    split: "train"
+    train_on_split: "train"
+
+learning_rate: 5.0e-6
+gradient_accumulation_steps: 1
+micro_batch_size: 4
+num_epochs: 2
+
+seed: 666
+output_dir: ./mistral-controlled/ce-cls-mistral-7b-it_bs32_lr5e-6-l3-8b-8b
+wandb_name: "ce-cls-mistral-7b-it_bs32_lr5e-6-l3-8b-8b"
+sequence_len: 2048
+############################################
+
+## Input sequences
+train_on_inputs: false
+sample_packing: true
+pad_to_sequence_len: true
+group_by_length: false
+dataset_processes: 48
+
+## Vanilla
+save_safetensors: true
+bf16: auto
+fp16: false
+tf32: true
+logging_steps: 4
+flash_attention: true
+
+## Optimizer
+optimizer: adamw_torch_fused
+lr_scheduler: cosine
+gradient_checkpointing: True
+weight_decay: 0.0
+max_grad_norm: 1.0
+warmup_steps: 40
+
+## Others
+save_strategy: "epoch"
+save_total_limit: 2
+wandb_project: llm4code
+special_tokens:
+  pad_token: "</s>"

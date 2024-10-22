@@ -1,0 +1,18 @@
+# core
+boto3
+datasets
+openai
+rich
+transformers
+fire
+astor
+editdistance
+python-dotenv
+stop_sequencer
+google-generativeai
+evalplus @ git+https://github.com/evalplus/evalplus.git@master
+# debug
+ipython
+# dev
+black
+pre-commit

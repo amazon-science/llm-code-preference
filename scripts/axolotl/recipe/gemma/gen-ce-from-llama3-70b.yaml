@@ -1,0 +1,56 @@
+# SPDX-FileCopyrightText: (c) 2024 Amazon.com, Inc. or its affiliates
+#
+# SPDX-License-Identifier: Apache-2.0
+
+## Base model
+base_model: google/gemma-2-9b-it
+model_type: AutoModelForCausalLM
+tokenizer_type: AutoTokenizer
+
+############################################
+### Configs that you may want to change  ###
+datasets:
+  - path: ./storage/datasets/ace/meta-llama--Meta-Llama-3-8B-Instruct-codegen_soss.teacher.meta-llama--Meta-Llama-3-70B-Instruct.critic_evol_v3.axolotl.cot.both_order
+    conversation: gemma
+    type: sharegpt.load_ultrachat
+    split: "train"
+    train_on_split: "train"
+
+learning_rate: 2.0e-6
+gradient_accumulation_steps: 4
+micro_batch_size: 1
+num_epochs: 2
+
+seed: 666
+output_dir: ./storage/ce-gen-gemma2-9b-it_lr2e-6-l3-70b
+wandb_name: "ce-gen-gemma2-9b-it_lr2e-6-l3-70b"
+wandb_project: llm4code
+sequence_len: 2048
+############################################
+
+## Input sequences
+train_on_inputs: false
+sample_packing: true
+pad_to_sequence_len: true
+group_by_length: false
+dataset_processes: 48
+
+## Vanilla
+save_safetensors: true
+trust_remote_code: false
+bf16: auto
+fp16: false
+tf32: true
+logging_steps: 4
+flash_attention: true
+
+## Optimizer
+optimizer: adamw_torch_fused
+lr_scheduler: cosine
+gradient_checkpointing: True
+weight_decay: 0.0
+max_grad_norm: 1.0
+warmup_steps: 40
+
+## Others
+save_strategy: "no"

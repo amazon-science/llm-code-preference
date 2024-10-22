@@ -1,0 +1,63 @@
+# SPDX-FileCopyrightText: (c) 2024 Amazon.com, Inc. or its affiliates
+#
+# SPDX-License-Identifier: Apache-2.0
+
+## Base model
+base_model: meta-llama/Meta-Llama-3-8B-Instruct
+model_type: AutoModelForCausalLM
+tokenizer_type: AutoTokenizer
+
+############################################
+### Configs that you may want to change  ###
+datasets:
+  - path: ./storage/datasets/ace/meta-llama--Meta-Llama-3-8B-Instruct-codegen_soss.teacher.meta-llama--Meta-Llama-3-70B-Instruct.critic_evol_v3.axolotl.classification.both_order
+    conversation: llama-3
+    type: sharegpt.load_ultrachat
+    split: "train"
+    train_on_split: "train"
+  - path: ./storage/datasets/cci/editpackft-chatcommit-v4-raw-meta-llama--Meta-Llama-3-70B-Instruct.axolotl.classification.both_order
+    conversation: llama-3
+    type: sharegpt.load_ultrachat
+    split: "train"
+    train_on_split: "train"
+
+learning_rate: 5.0e-6
+gradient_accumulation_steps: 2
+micro_batch_size: 2
+num_epochs: 2
+
+seed: 666
+output_dir: ./storage/repro-models/mix-cls-llama3-8b-it_bs32_ep2_lr5e-6-l3-70b-retry
+wandb_name: "mix-cls-llama3-8b-it_bs32_ep2_lr5e-6-l3-70b-retry"
+wandb_project: llm4code
+sequence_len: 2048
+############################################
+
+## Input sequences
+train_on_inputs: false
+sample_packing: true
+pad_to_sequence_len: true
+group_by_length: false
+dataset_processes: 48
+
+## Vanilla
+save_safetensors: true
+bf16: auto
+fp16: false
+tf32: true
+logging_steps: 4
+flash_attention: true
+
+## Optimizer
+optimizer: adamw_torch_fused
+lr_scheduler: cosine
+gradient_checkpointing: True
+weight_decay: 0.0
+max_grad_norm: 1.0
+warmup_steps: 40
+
+## Others
+save_strategy: "epoch"
+save_total_limit: 2
+special_tokens:
+  pad_token: "<|eot_id|>"
