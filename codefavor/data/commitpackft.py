@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: (c) 2024 Amazon.com, Inc. or its affiliates
 #
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: CC-BY-NC-4.0
 
 from codefavor.data.utility import LANGUAGES, get_filters
 from datasets import load_dataset

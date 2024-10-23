@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: (c) 2024 Amazon.com, Inc. or its affiliates
 #
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: CC-BY-NC-4.0
 
 # This script is partially adapted from
 # https://github.com/RLHFlow/RLHF-Reward-Modeling/blob/main/pair-pm/process_pair_data.py

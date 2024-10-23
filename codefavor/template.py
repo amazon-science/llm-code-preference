@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: (c) 2024 Amazon.com, Inc. or its affiliates
 #
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: CC-BY-NC-4.0
 
 CORRECTNESS_CRITERIA = "The ideal code should be directly runnable, correct, and bug-free to the given instruction."
 EFFICIENCY_CRITIERIA = "The ideal code should be efficient in execution time (primary) and memory usage (secondary)."

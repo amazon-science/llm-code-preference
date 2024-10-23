@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: (c) 2024 Amazon.com, Inc. or its affiliates
 #
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: CC-BY-NC-4.0
 
 # Decompose the raw response in Active Code Evolution
 import hashlib
