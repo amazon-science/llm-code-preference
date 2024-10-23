@@ -134,3 +134,6 @@ python codefavor/prompt/critic_evol.py --weak-dataset ./datasets/train/Llama-3-8
 * Our training code is partially adapted from [RLHFlow](https://github.com/RLHFlow/RLHF-Reward-Modeling).
 * Our evaluation code is partially adapted from [RepoQA](https://github.com/evalplus/repoqa).
 * The seed corpus used in this paper comes from [EditPackFT](https://huggingface.co/datasets/nuprl/EditPackFT) and [Self-OSS-Instruct](https://huggingface.co/datasets/bigcode/self-oss-instruct-sc2-exec-filter-50k).
+
+## Research Use Only
+This source code is being released solely for academic and scientific reproducibility purposes, in support of the methods and findings described in the associated publication. Pull requests are not being accepted in order to maintain the code exactly as it was used in the paper, but interested parties are encouraged to open an issue requesting open source community development.
