@@ -40,7 +40,7 @@ To this end, our work provides:
 * Python requirements: 3.10 or higher.
 
 ```bash
-conda create -n codefavor python=3.10
+conda create -n codefavor python=3.10 -y
 conda activate codefavor
 pip install -r requirements.txt
 ```
@@ -52,7 +52,7 @@ pip install -r requirements.txt
 python codefavor/evaluate.py --model-id "gpt-4o-2024-05-13" --model-type openai --concurrency 80
 # Other OpenAI-compatible servers (vLLM, DeepSeek APIs, etc.)
 python codefavor/evaluate.py --model-id "google/gemma-2-27b-it" --model-type openai --concurrency 80 --model-url http://localhost:8000/v1
-# Claude models at Bedrock
+# Claude models via Bedrock
 python codefavor/evaluate.py --model-id "anthropic.claude-3-sonnet-20240229-v1:0" --model-type bedrock --concurrency 10
 # Pairwise RM
 python codefavor/evaluate.py --model-id ./models/mix-cls-mistral-7b-it_bs32_ep1_lr5e-6-l3-70b/checkpoint-688 --model-type pair-rm
